@@ -1,0 +1,221 @@
+{
+  "app_name": "ElectroGestor",
+  "personality": "1 iOS-Native Clean structure with 6 Glass / Luxe surfaces in dark mode",
+  "personality_one_liner": "A professional, clean, and elegant inventory management tool that feels native and trustworthy, shifting to cinematic glass depth in dark mode.",
+  "color": {
+    "light": {
+      "surface": "#FFFFFF",
+      "onSurface": "#111827",
+      "surfaceSecondary": "#F3F4F6",
+      "onSurfaceSecondary": "#374151",
+      "surfaceTertiary": "#E5E7EB",
+      "onSurfaceTertiary": "#4B5563",
+      "surfaceInverse": "#1F2937",
+      "onSurfaceInverse": "#F9FAFB",
+      "brand": "#0A5CFF",
+      "onBrand": "#FFFFFF",
+      "brandPrimary": "#0047AB",
+      "onBrandPrimary": "#FFFFFF",
+      "brandSecondary": "#3377FF",
+      "onBrandSecondary": "#FFFFFF",
+      "brandTertiary": "#E0EBFF",
+      "onBrandTertiary": "#003380",
+      "success": "#10B981",
+      "onSuccess": "#FFFFFF",
+      "warning": "#F59E0B",
+      "onWarning": "#FFFFFF",
+      "error": "#EF4444",
+      "onError": "#FFFFFF",
+      "info": "#3B82F6",
+      "onInfo": "#FFFFFF",
+      "border": "#E5E7EB",
+      "borderStrong": "#D1D5DB",
+      "divider": "#F3F4F6",
+      "muted": "#6B7280"
+    },
+    "dark": {
+      "surface": "#0B0F19",
+      "onSurface": "#F9FAFB",
+      "surfaceSecondary": "#151C2D",
+      "onSurfaceSecondary": "#D1D5DB",
+      "surfaceTertiary": "#1F2937",
+      "onSurfaceTertiary": "#9CA3AF",
+      "surfaceInverse": "#F3F4F6",
+      "onSurfaceInverse": "#111827",
+      "brand": "#3377FF",
+      "onBrand": "#FFFFFF",
+      "brandPrimary": "#3377FF",
+      "onBrandPrimary": "#FFFFFF",
+      "brandSecondary": "#5C95FF",
+      "onBrandSecondary": "#FFFFFF",
+      "brandTertiary": "#1E3A8A",
+      "onBrandTertiary": "#BFDBFE",
+      "success": "#059669",
+      "onSuccess": "#FFFFFF",
+      "warning": "#D97706",
+      "onWarning": "#FFFFFF",
+      "error": "#DC2626",
+      "onError": "#FFFFFF",
+      "info": "#2563EB",
+      "onInfo": "#FFFFFF",
+      "border": "#1F2937",
+      "borderStrong": "#374151",
+      "divider": "#151C2D",
+      "muted": "#9CA3AF"
+    }
+  },
+  "typography": {
+    "displayFontFamily": "Plus Jakarta Sans",
+    "textFontFamily": "Plus Jakarta Sans",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24
+    }
+  },
+  "spacing": {
+    "rule": "Generous vertical padding, single-column forms with sticky CTAs, and strictly aligned 2-column grids for dashboard tiles.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 6,
+    "md": 12,
+    "lg": 20,
+    "pill": 999
+  },
+  "shadow_tier": "1",
+  "navigation": "bottom_tabs",
+  "icon_set": "Ionicons",
+  "glassmorphism": {
+    "enabled": true,
+    "do's": [
+      "Use on sticky headers over scrolling content",
+      "Use on the bottom tab bar",
+      "Use on confirmation modal scrims",
+      "Apply dark mode glass on surfaceSecondary cards over the abstract blue background"
+    ],
+    "dont's": [
+      "Do not blur form fields or dense text areas",
+      "Do not use on low-end Android devices"
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "expo-glass-effect",
+      "android": "expo-blur",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler"
+  },
+  "screens": [
+    {
+      "name": "Onboarding",
+      "purpose": "Initial setup asking only for the user's name without password.",
+      "states": {
+        "loading": "Spinner in center.",
+        "empty": "Clean full-screen form with a single large text input.",
+        "error": "Inline red text below input if name is empty."
+      },
+      "layout": "Full bleed layout. A subtle gradient background. Large greeting typography (display font, 2xl). Centered single text input with 'surfaceTertiary' background, no border. Sticky 'Continuar' button at the bottom safely above the indicator."
+    },
+    {
+      "name": "Home (Categorías)",
+      "purpose": "Main dashboard displaying product categories and access to global search.",
+      "states": {
+        "loading": "Skeleton grid of cards.",
+        "empty": "Empty cardboard box image, text 'No hay categorías registradas', and a primary CTA 'Añadir Categoría'.",
+        "error": "Centered error message with Retry button."
+      },
+      "layout": "Sticky header with user greeting. A 2-column grid for categories (wrap with space-between). Each category card uses 'surfaceSecondary' with a large tinted icon container. FAB at bottom right to add a new category with glass blur."
+    },
+    {
+      "name": "Category Details (Marcas)",
+      "purpose": "Displays auto-generated brands within a selected category.",
+      "states": {
+        "loading": "List skeletons.",
+        "empty": "Empty state illustration with text 'Aún no hay marcas en esta categoría'.",
+        "error": "Centered error message."
+      },
+      "layout": "List view. Each row displays the brand name as a subcategory. Use standard leading visual (initials if logo absent) + title + chevron right. Minimum 56pt height per row."
+    },
+    {
+      "name": "Product List",
+      "purpose": "Displays products under a specific brand.",
+      "states": {
+        "loading": "Skeleton rows.",
+        "empty": "Empty box image with 'No hay productos de esta marca'.",
+        "error": "Retry state."
+      },
+      "layout": "Scrollable list. Each row shows Product Name, SKU (muted), and Base Price (S/ es-PE format). FAB to add a new product."
+    },
+    {
+      "name": "Product Form",
+      "purpose": "Register or edit a product with dynamic colors and live warranty calculation.",
+      "states": {
+        "loading": "Spinner during save.",
+        "empty": "Form fields blank.",
+        "error": "Toast or inline text for validation (e.g., missing price)."
+      },
+      "layout": "Single-column scrollable form. Labels above inputs. Dynamic color section: a 'surfaceSecondary' container where users can tap 'Add Color' to append new surfaceTertiary blocks containing Name and SKU inputs. A pinned bottom container (using glassmorphism) showing live Warranty Price calculation based on inputted price, alongside the sticky 'Guardar' button."
+    },
+    {
+      "name": "Product Detail",
+      "purpose": "View product info, select color, and see price breakdown (Product + Warranty = Sum).",
+      "states": {
+        "loading": "Skeleton blocks.",
+        "empty": "Not applicable.",
+        "error": "Retry state if product load fails."
+      },
+      "layout": "Top hero section featuring a tinted gradient or brand logo. Below, product title and SKU. Color selection via 'brandTertiary' tinted chips. A clear, segregated price breakdown card displaying: Base Price, Warranty Price, and a prominent SUMA (Total) in 'brandPrimary'. Bottom sheet or modal for delete action (centered 'Sí'/'No')."
+    },
+    {
+      "name": "Configuración",
+      "purpose": "Manage categories and warranty rules based on price ranges.",
+      "states": {
+        "loading": "Spinner.",
+        "empty": "Default empty config lists.",
+        "error": "Toast message."
+      },
+      "layout": "Standard iOS-style settings list. Grouped rows with 'surfaceSecondary' cards. Tinted icon containers on the left of each row. Sections for 'Categorías' and 'Reglas de Garantía'."
+    }
+  ],
+  "images": {
+    "empty_state_box": {
+      "url": "https://images.unsplash.com/photo-1700165644892-3dd6b67b25bc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwxfHxlbXB0eSUyMG9wZW4lMjBjYXJkYm9hcmQlMjBib3h8ZW58MHx8fHwxNzkxMDEwMDQ2fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Empty open cardboard boxes representing zero inventory"
+    },
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1724405143873-cdaa5cac918e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwxfHxsaWdodCUyMGJsdWUlMjBtaW5pbWFsJTIwYWJzdHJhY3QlMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc5MTAxMDA1MXww&ixlib=rb-4.1.0&q=85",
+      "dark": "https://images.unsplash.com/photo-1614850523011-8f49ffc73908?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGJsdWUlMjBncmFkaWVudCUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzkxMDEwMDQ2fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Abstract blue gradient background for hero cards"
+    }
+  },
+  "haptics": {
+    "button_press": "light",
+    "form_submit": "medium",
+    "delete_warning": "heavy",
+    "tab_change": "selection"
+  },
+  "instructions_to_main_agent": [
+    "Ensure dark mode and light mode are both fully supported as requested by the user. The app should launch into an empty state ('empezar vacío').",
+    "Use the explicit professional blue ('azul profesional') tokens provided, bypassing the default ban because the user specifically requested it.",
+    "Implement Peruvian Soles format (S/ ) for all monetary values.",
+    "The Warranty price logic must dynamically update within the product form as the base price changes, placing this in a sticky bottom container.",
+    "Use centralized modals for deletions with simple 'Sí'/'No' options as requested.",
+    "Brands are auto-generated from the 'Marca' field of products. Do not make a separate form for Brands; derive them from the products within a category.",
+    "Do NOT use emojis anywhere in the app UI.",
+    "Follow 44x44pt touch targets rigorously for all list chevrons and form inputs."
+  ]
+}
