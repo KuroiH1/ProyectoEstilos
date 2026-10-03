@@ -67,7 +67,7 @@ export default function Onboarding() {
           <View style={styles.logo}>
             <Icon name="cube" size={28} color={colors.onBrandPrimary} />
           </View>
-          <Text style={styles.brandName}>ElectroGestor</Text>
+          <Text style={styles.brandName}>ElectroEstilos</Text>
         </View>
 
         <Text style={styles.greeting}>Bienvenido</Text>
